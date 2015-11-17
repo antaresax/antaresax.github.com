@@ -1,0 +1,26 @@
+mk dir <folder name>
+
+git init
+
+git remote add origin <adress>
+
+git clone <adress>
+
+git status
+
+git add <file name>
+
+git add *
+
+
+git commit -m " explain contents"
+
+git push origin master
+
+
+git pull <sync>
+
+git remote rm origin <remove >
+
+git rm <file name. >
+
