@@ -1,0 +1,83 @@
+<!--
+  Tutorial: Subtractive Synthesizer - Monophony
+-->
+
+<!doctype html>
+<html>
+
+<head>
+  <title>Dr.Hong | OSC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+  <link rel="import" href="assets/motw-doc-header.html">
+</head>
+
+<body>
+
+  <div class="info">
+    <h1>osc.amp sound</h1>
+    <h2>Frequency modulation</h2>
+    <p class="description">Web-based Frequency modulation</p>
+    <ul>
+      <li>inatruments <strong>Saxophone</strong> anything else</li>
+      <li>Press keys to change the pitch: <code> </code></li>
+      <li>  <strong> timbre</strong> and <strong>effect</strong> </li>
+    </ul>
+  </div>
+
+  <div class="workspace">
+    
+     <spiral-knob id="k-frequency" label="Frequency" value="20" min-value="0" max-value="1000"></spiral-knob>
+    <spiral-knob id="k-amp" label="Amp" value="0.1" min-value="0" max-value="1.0"></spiral-knob>
+
+  </div>
+
+  <div id="code-viewer">
+  </div>
+
+<script id="tutorial-code">
+window.addEventListener('WebComponentsReady', function ()
+
+ {
+  var context = new AudioContext();
+  var sawosc = context.createOscillator();
+ 
+   var amp1 = context.createGain();
+
+  sawosc.type = 'sawtooth';
+
+
+  
+  sawosc.frequency.value = 37;
+  amp1.gain.value = 0.3;
+  
+ sawosc.to(amp1);
+  amp1.connect(context.DAC);
+
+ sawosc.start();
+ 
+
+  var knobs = {
+     frequency: document.getElementById('k-frequency'),
+    amp1: document.getElementById('k-amp'),
+   
+   
+  };
+  -
+  knobs.frequency.bind(sawosc.frequency );
+  knobs.amp1.bind(amp1.gain);
+
+ 
+ 
+}
+
+      );
+</script>
+
+</body>
+
+</html>
+
+</html>
